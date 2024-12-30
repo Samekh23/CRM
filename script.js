@@ -11,9 +11,13 @@ document.getElementById('product-form').addEventListener('submit', function (e) 
   }
 
   if (editMode) {
-    products[productId].name = productName;
-    products[productId].price = productPrice;
-    editMode = false;
+    if (confirm('¿Estás seguro de que deseas actualizar este producto?')) {
+      products[productId].name = productName;
+      products[productId].price = productPrice;
+      editMode = false;
+    } else {
+      return; // No hacer nada si se cancela
+    }
   } else {
     products.push({ name: productName, price: productPrice });
   }
@@ -24,16 +28,21 @@ document.getElementById('product-form').addEventListener('submit', function (e) 
 });
 
 function editProduct(index) {
-  const product = products[index];
-  document.getElementById('product-id').value = index;
-  document.getElementById('product-name').value = product.name;
-  document.getElementById('product-price').value = product.price;
-  editMode = true;
-  document.getElementById('submit-btn').textContent = 'Actualizar Producto';
+  if (confirm('¿Deseas editar este producto?')) {
+    const product = products[index];
+    document.getElementById('product-id').value = index;
+    document.getElementById('product-name').value = product.name;
+    document.getElementById('product-price').value = product.price;
+    editMode = true;
+    document.getElementById('submit-btn').textContent = 'Actualizar Producto';
+  }
 }
 
 function deleteProduct(index) {
-  products.splice(index, 1);
-  localStorage.setItem('products', JSON.stringify(products));
-  renderProducts();
+  if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
+    products.splice(index, 1);
+    localStorage.setItem('products', JSON.stringify(products));
+    renderProducts();
+  }
 }
+

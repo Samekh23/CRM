@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Application</title>
+  <!-- Enlace al archivo CSS -->
+  <link rel="stylesheet" href="Estilo.CSS">
+</head>
+<body>
+  <h1>CRUD</h1>
+
+  <!-- Formulario para crear y modificar productos -->
+  <div class="form-container">
+    <h2>Crear/Editar/Eliminar Producto</h2>
+    <form id="product-form">
+      <input type="hidden" id="product-id">
+      <label for="product-name">Nombre del Producto:</label>
+      <input type="text" id="product-name" placeholder="Nombre" required>
+      <label for="product-price">Precio:</label>
+      <input type="number" id="product-price" placeholder="Precio" required>
+      <button type="submit" id="submit-btn">Crear Producto</button>
+    </form>
+  </div>
+
+  <!-- Sección para mostrar los productos -->
+  <div class="list-container">
+    <h2>Lista de Productos</h2>
+    <table id="product-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Los productos se insertarán aquí -->
+      </tbody>
+    </table>
+  </div>
+
+<footer>
+        <p>&copy; 2024 CRUD STM</p>
+    </footer>
+
+  <!-- Enlace a los archivos JavaScript -->
+  <script src="dom.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
